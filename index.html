@@ -31,20 +31,23 @@
 
     <button id="remover" class="border p-5 rounded-full hover:bg-red-600 bg-red-400">Annuler le dernier Buy in</button>
 
-    <div class="grid grid-cols-3 gap-3 m-10">
 
-            <h2 class="mt-12 text-3xl">Nombre de tournois</h2>
-            <h2 class="mt-12 text-3xl">Total des Buy-ins</h2>
-            <h2 class="mt-12 text-3xl">Buy-in moyen</h2>
-
-    </div>
-    <div class="grid grid-cols-3 gap-3 m-10">
-        
-            <h3 class="mt-5 text-2xl"  id="totalTable"></h3>
-            <h3 class="mt-5 text-2xl" id="totalBi"></h3>
-            <h3 class="mt-5 text-2xl" id="moyenne"></h3>
-            
-    </div>
+    <table class="m-10 border-separate border border-gray-800">
+        <thead>
+          <tr>
+            <th class="border border-gray-600 w-1/3">Nombre de tournois</th>
+            <th class="border border-gray-600 w-1/3">Total des Buy-ins</th>
+            <th class="border border-gray-600 w-1/3">Buy-in moyen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mt-5 text-2xl border border-gray-600" id="totalTable">0</td>
+            <td class="mt-5 text-2xl border border-gray-600"id="totalBi">0</td>
+            <td class="mt-5 text-2xl border border-gray-600"id="moyenne">0</td>
+          </tr>
+        </tbody>
+      </table>
 
     <script src="./script.js"></script>
 </body>

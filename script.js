@@ -5,8 +5,12 @@ function sumArray(array) {
     for (let index = 0; index < array.length; index++) {
         sum += parseFloat(array[index]);
     }
-    let total = document.getElementById("total");
-    total.innerHTML = sum;
+    let totalBi = document.getElementById("totalBi");
+    totalBi.innerHTML = sum;
+
+    let totalTable = document.getElementById("totalTable");
+    totalTable.innerHTML = array.length;
+
     return sum;
 }
 function addBuyIn(array,value){

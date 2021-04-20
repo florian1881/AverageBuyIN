@@ -1,9 +1,8 @@
 let buyIns = [];
-let BaseBuyIns=[0.25,0.5,1,2,5,10];
-
 
 let buttons = document.getElementsByClassName("myButton");
 let details = document.getElementById("details");
+let test = document.getElementById("test");
 
 function sumArray(array) {
     let sum = 0;
@@ -20,7 +19,7 @@ function sumArray(array) {
 }
 
 function addBuyIn(array, value) {
-    array.push(value);
+    array.push(parseFloat(value));
 }
 
 function average(array) {
@@ -36,13 +35,17 @@ function average(array) {
 }
 
 function showDetails(array) {
-
+    let baseBuyIns=[0.25,0.5,1,2,5,10];
     let buyInsOccurency=[[0.25,0],[0.5,0],[1,0],[2,0],[5,0],[10,0]];
+    test.innerHTML=" ";
     // Itération, tri du tableau et affichage dans la partie details
     for (let index = 0; index < array.length; index++) {
-        array[BaseBuyIns.indexOf(array[index])][1]+1;    
+        buyInsOccurency[baseBuyIns.indexOf(array[index])][1]++;
+    }    
+    for (let index = 0; index < buyInsOccurency.length; index++) {
+        test.innerHTML+=`<td class="mt-5 text-2xl border border-gray-600" id="totalTable">${buyInsOccurency[index][1]}</td>`
     }
-    details.innerHTML=arrayBis;
+  
 }
 
 function removeLastBuyIn(array) {
@@ -61,12 +64,10 @@ function removeLastBuyIn(array) {
 
 [].forEach.call(buttons, function (button) {
     button.addEventListener("click", function () {
-        arrayBis.push(button.id)
-        console.log(arrayBis);
         addBuyIn(buyIns, button.id)
         sumArray(buyIns);
         average(buyIns);
-        // showDetails(buyIns);
+        showDetails(buyIns)
     });
 });
 
@@ -78,3 +79,4 @@ remover.addEventListener("click", function () {
     average(buyIns);
     showDetails(buyIns); 
 });
+

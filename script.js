@@ -1,4 +1,9 @@
 let buyIns = [];
+let BaseBuyIns=[0.25,0.5,1,2,5,10];
+
+
+let buttons = document.getElementsByClassName("myButton");
+let details = document.getElementById("details");
 
 function sumArray(array) {
     let sum = 0;
@@ -13,27 +18,31 @@ function sumArray(array) {
 
     return sum;
 }
-function addBuyIn(array,value){
+
+function addBuyIn(array, value) {
     array.push(value);
 }
 
 function average(array) {
     let moyenne = document.getElementById("moyenne");
     if (array.length > 0) {
-    let average = sumArray(array)/array.length;
-    let averageRounded= average.toFixed(2);
-    moyenne.innerHTML= averageRounded;
-    return averageRounded;
+        let average = sumArray(array) / array.length;
+        let averageRounded = average.toFixed(2);
+        moyenne.innerHTML = averageRounded;
+        return averageRounded;
     }
-    moyenne.innerHTML= 0;
+    moyenne.innerHTML = 0;
     return 0;
 }
 
-function show(){
-    
-    
-    
-    
+function showDetails(array) {
+
+    let buyInsOccurency=[[0.25,0],[0.5,0],[1,0],[2,0],[5,0],[10,0]];
+    // Itération, tri du tableau et affichage dans la partie details
+    for (let index = 0; index < array.length; index++) {
+        array[BaseBuyIns.indexOf(array[index])][1]+1;    
+    }
+    details.innerHTML=arrayBis;
 }
 
 function removeLastBuyIn(array) {
@@ -48,21 +57,24 @@ function removeLastBuyIn(array) {
 
 
 // Event listener add Buy in
-let buttons = document.getElementsByClassName("myButton");
+
 
 [].forEach.call(buttons, function (button) {
     button.addEventListener("click", function () {
-        addBuyIn(buyIns,button.id)
-        console.log(sumArray(buyIns)); 
-        console.log(average(buyIns));
-        // show(buyIns);
+        arrayBis.push(button.id)
+        console.log(arrayBis);
+        addBuyIn(buyIns, button.id)
+        sumArray(buyIns);
+        average(buyIns);
+        // showDetails(buyIns);
     });
 });
 
 // Event listener remove Buy in
 let remover = document.getElementById("remover");
-remover.addEventListener("click", function() {
-removeLastBuyIn(buyIns);
-console.log(sumArray(buyIns));
-console.log(average(buyIns));
+remover.addEventListener("click", function () {
+    removeLastBuyIn(buyIns);
+    sumArray(buyIns);
+    average(buyIns);
+    showDetails(buyIns); 
 });
